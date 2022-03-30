@@ -50,6 +50,16 @@ const SignUpScreen = () => {
     );
   }
 
+  function renderForm() {
+    return (
+      <View style={styles.formView}>
+        <View style={styles.fullNameView}>
+          <Text style={styles.textView}>Full Name</Text>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS == 'ios' ? 'padding' : null}
@@ -58,6 +68,7 @@ const SignUpScreen = () => {
         <ScrollView>
           {renderHeader()}
           {renderLogo()}
+          {renderForm()}
         </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView>
@@ -82,5 +93,19 @@ const styles = StyleSheet.create({
   logoStyle: {
     resizeMode: 'contain',
     width: '60%',
+  },
+
+  formView: {
+    marginTop: SIZES.padding * 3,
+    marginHorizontal: SIZES.padding * 3,
+  },
+
+  fullNameView: {
+    marginTop: SIZES.padding * 3,
+  },
+
+  textView: {
+    ...FONTS.body3,
+    color: COLORS.lightGreen,
   },
 });
