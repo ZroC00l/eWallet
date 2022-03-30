@@ -55,6 +55,7 @@ const SignUpScreen = () => {
       <View style={styles.formView}>
         <View style={styles.fullNameView}>
           <Text style={styles.textView}>Full Name</Text>
+          <TextInput style={styles.textinput} />
         </View>
       </View>
     );
@@ -107,5 +108,13 @@ const styles = StyleSheet.create({
   textView: {
     ...FONTS.body3,
     color: COLORS.lightGreen,
+  },
+  textinput: {
+    marginVertical: SIZES.padding,
+    borderBottomColor: COLORS.white,
+    borderBottomWidth: 1,
+    height: 40,
+    color: COLORS.white,
+    ...FONTS.body3,
   },
 });
