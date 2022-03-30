@@ -55,7 +55,43 @@ const SignUpScreen = () => {
       <View style={styles.formView}>
         <View style={styles.fullNameView}>
           <Text style={styles.textView}>Full Name</Text>
-          <TextInput style={styles.textinput} />
+          <TextInput
+            style={styles.textinput}
+            placeholder="Enter your full name"
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+          />
+        </View>
+        <View style={styles.phoneNumberView}>
+          <Text style={styles.textView}>Phone Number</Text>
+          <View style={styles.areaCodeView}>
+            <TouchableOpacity style={styles.areaCodeTouchableView} onPress={{}}>
+              <View style={{justifyContent: 'center'}}>
+                <Icon
+                  type="material-community"
+                  name="arrow-down-drop-circle"
+                  size={20}
+                  color={COLORS.white}
+                />
+              </View>
+              <View style={styles.flagView}>
+                <Image
+                  source={images.sa_flag}
+                  resizeMode="contain"
+                  style={{width: 30, height: 30}}
+                />
+              </View>
+              <View style={styles.fullNumberView}>
+                <Text style={styles.fullnumberTextView}>+27</Text>
+              </View>
+            </TouchableOpacity>
+            <TextInput
+              style={styles.textinput2}
+              placeholder="Enter Phone Number"
+              placeholderTextColor={COLORS.white}
+              selectionColor={COLORS.white}
+            />
+          </View>
         </View>
       </View>
     );
@@ -116,5 +152,43 @@ const styles = StyleSheet.create({
     height: 40,
     color: COLORS.white,
     ...FONTS.body3,
+  },
+  textinput2: {
+    flex: 1,
+    marginVertical: SIZES.padding,
+    borderBottomColor: COLORS.white,
+    borderBottomWidth: 1,
+    height: 40,
+    color: COLORS.white,
+    ...FONTS.body3,
+  },
+  phoneNumberView: {
+    marginTop: SIZES.padding * 2,
+  },
+  areaCodeView: {
+    flexDirection: 'row',
+  },
+  areaCodeTouchableView: {
+    width: 100,
+    height: 50,
+    marginHorizontal: 5,
+    borderBottomColor: COLORS.white,
+    borderBottomWidth: 1,
+    flexDirection: 'row',
+    ...FONTS.body3,
+  },
+  flagView: {
+    justifyContent: 'center',
+    marginLeft: 5,
+  },
+
+  fullNumberView: {
+    justifyContent: 'center',
+    marginLeft: 5,
+  },
+
+  fullnumberTextView: {
+    ...FONTS.body3,
+    color: COLORS.white,
   },
 });
