@@ -93,6 +93,25 @@ const SignUpScreen = () => {
             />
           </View>
         </View>
+        <View style={styles.passwordView}>
+          <Text style={styles.textView}>Password</Text>
+
+          <TextInput
+            style={styles.textinput}
+            placeholder="Enter your password"
+            placeholderTextColor={COLORS.white}
+            selectionColor={COLORS.white}
+            secureTextEntry={true}
+          />
+          <TouchableOpacity style={styles.showHideView}>
+            <Icon
+              type="material-community"
+              name="eye-outline"
+              size={20}
+              color={COLORS.white}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -190,5 +209,15 @@ const styles = StyleSheet.create({
   fullnumberTextView: {
     ...FONTS.body3,
     color: COLORS.white,
+  },
+  passwordView: {
+    marginTop: SIZES.padding * 3,
+  },
+  showHideView: {
+    position: 'absolute',
+    right: 0,
+    bottom: 10,
+    height: 30,
+    width: 30,
   },
 });
