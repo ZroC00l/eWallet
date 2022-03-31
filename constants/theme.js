@@ -21,7 +21,7 @@ export const COLORS = {
   yellow: '#FFC664',
   lightYellow: 'FFF9EC',
 
-  black: '1E1F20',
+  black: '#1E1F20',
   white: 'white',
 
   lightGray: 'FCFBFC',

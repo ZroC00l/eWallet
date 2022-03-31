@@ -12,7 +12,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {Icon} from 'react-native-elements';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -20,6 +20,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
 const SignUpScreen = () => {
+  const [showHidePassword, setShowHidePassword] = useState(false);
+
   function renderHeader() {
     return (
       <TouchableOpacity
@@ -101,17 +103,28 @@ const SignUpScreen = () => {
             placeholder="Enter your password"
             placeholderTextColor={COLORS.white}
             selectionColor={COLORS.white}
-            secureTextEntry={true}
+            secureTextEntry={!showHidePassword}
           />
           <TouchableOpacity style={styles.showHideView}>
             <Icon
               type="material-community"
-              name="eye-outline"
+              name={showHidePassword ? 'eye-off-outline' : 'eye-outline'}
               size={20}
               color={COLORS.white}
+              onPress={() => setShowHidePassword(!showHidePassword)}
             />
           </TouchableOpacity>
         </View>
+      </View>
+    );
+  }
+
+  function renderButton() {
+    return (
+      <View style={styles.buttonView}>
+        <TouchableOpacity style={styles.buttonTouchableView} onPress={{}}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -125,6 +138,7 @@ const SignUpScreen = () => {
           {renderHeader()}
           {renderLogo()}
           {renderForm()}
+          {renderButton()}
         </ScrollView>
       </LinearGradient>
     </KeyboardAvoidingView>
@@ -219,5 +233,20 @@ const styles = StyleSheet.create({
     bottom: 10,
     height: 30,
     width: 30,
+  },
+  buttonView: {
+    margin: SIZES.padding * 3,
+  },
+  buttonTouchableView: {
+    height: 60,
+    backgroundColor: COLORS.black,
+    borderRadius: SIZES.radius / 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  buttonText: {
+    color: COLORS.white,
+    ...FONTS.h4,
   },
 });
