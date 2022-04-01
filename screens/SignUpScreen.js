@@ -36,8 +36,18 @@ const SignUpScreen = () => {
             code: item.alpha2Code,
             name: item.name,
             callingCodes: '+${item.callingCodes[0]}',
+            flag: 'https://www.countryflags.io/#{item.alpha2Code}/flat/64.png', //not sure if this is the correct way to get the flag, cause countryflags site api doesnt work
           };
         });
+        setAreaCode(areaData);
+
+        if (areaData.length > 0) {
+          let defaultData = areaData.filter(a => a.code === 'RSA');
+
+          if (defaultData.length > 0) {
+            setSelectedAreaCode(defaultData[0]);
+          }
+        }
       })
       .catch(error => {
         console.log(error);
@@ -100,7 +110,7 @@ const SignUpScreen = () => {
               </View>
               <View style={styles.flagView}>
                 <Image
-                  source={images.sa_flag}
+                  source={{uri: selectedAreadCode?.flag}}
                   resizeMode="contain"
                   style={{width: 30, height: 30}}
                 />
