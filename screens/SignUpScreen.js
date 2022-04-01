@@ -12,7 +12,7 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Icon} from 'react-native-elements';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -21,6 +21,28 @@ import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
 const SignUpScreen = () => {
   const [showHidePassword, setShowHidePassword] = useState(false);
+  const [areaCode, setAreaCode] = useState([]);
+  const [selectedAreadCode, setSelectedAreaCode] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+
+  /*useEffect hook to collect country area codes from rest countires API*/
+  useEffect(() => {
+    fetch('https://restcountries.eu/rest/v2/all')
+      .then(response => response.json())
+      .then(data => {
+        //setAreaCode(data);
+        let areaData = data.map(item => {
+          return {
+            code: item.alpha2Code,
+            name: item.name,
+            callingCodes: '+${item.callingCodes[0]}',
+          };
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   function renderHeader() {
     return (
