@@ -22,7 +22,7 @@ import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 const SignUpScreen = () => {
   const [showHidePassword, setShowHidePassword] = useState(false);
   const [areaCode, setAreaCode] = useState([]);
-  const [selectedAreadCode, setSelectedAreaCode] = useState(null);
+  const [selectedAreaCode, setSelectedAreaCode] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
   /*useEffect hook to collect country area codes from rest countires API*/
@@ -35,14 +35,14 @@ const SignUpScreen = () => {
           return {
             code: item.alpha2Code,
             name: item.name,
-            callingCodes: '+${item.callingCodes[0]}',
-            flag: 'https://www.countryflags.io/#{item.alpha2Code}/flat/64.png', //not sure if this is the correct way to get the flag, cause countryflags site api doesnt work
+            callingCode: `+${item.callingCodes[0]}`,
+            flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`, //not sure if this is the correct way to get the flag, cause countryflags site api doesnt work
           };
         });
         setAreaCode(areaData);
 
         if (areaData.length > 0) {
-          let defaultData = areaData.filter(a => a.code === 'RSA');
+          let defaultData = areaData.filter(a => a.code == 'us');
 
           if (defaultData.length > 0) {
             setSelectedAreaCode(defaultData[0]);
@@ -110,13 +110,15 @@ const SignUpScreen = () => {
               </View>
               <View style={styles.flagView}>
                 <Image
-                  source={{uri: selectedAreadCode?.flag}}
+                  source={{uri: selectedAreaCode?.flag}}
                   resizeMode="contain"
                   style={{width: 30, height: 30}}
                 />
               </View>
               <View style={styles.fullNumberView}>
-                <Text style={styles.fullnumberTextView}>+27</Text>
+                <Text style={styles.fullnumberTextView}>
+                  {selectedAreaCode?.callingCode}
+                </Text>
               </View>
             </TouchableOpacity>
             <TextInput
