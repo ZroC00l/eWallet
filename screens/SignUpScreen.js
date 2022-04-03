@@ -19,8 +19,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import {CallingCodePicker} from '@digieggs/rn-country-code-picker';
 
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
+import {NavigationContainer} from '@react-navigation/native';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
   const [showHidePassword, setShowHidePassword] = useState(false);
   const [areaCode, setAreaCode] = useState([]);
   const [selectedCallingCode, setSelectedCallingCode] = useState(90);
@@ -134,7 +135,9 @@ const SignUpScreen = () => {
   function renderButton() {
     return (
       <View style={styles.buttonView}>
-        <TouchableOpacity style={styles.buttonTouchableView} onPress={{}}>
+        <TouchableOpacity
+          style={styles.buttonTouchableView}
+          onPress={() => navigation.navigate('HomeScreen')}>
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
       </View>

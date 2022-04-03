@@ -11,7 +11,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer, DefaultTheme} from '@react-navigation/native';
 
 import SignUpScreen from './screens/SignUpScreen';
-
+import Tabs from './navigation/tabs';
 const theme = {
   ...DefaultTheme,
   colors: {
@@ -29,6 +29,12 @@ const App = () => {
         screenOptions={{headerShown: false}}
         initialRouteName={SignUpScreen}>
         <StackNav.Screen name="SignUpScreen" component={SignUpScreen} />
+        <StackNav.Screen
+          name="HomeScreen"
+          component={Tabs}
+          headerShown="false"
+          screenOptions={{headerShown: false}}
+        />
       </StackNav.Navigator>
     </NavigationContainer>
   );
