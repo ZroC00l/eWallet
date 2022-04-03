@@ -16,14 +16,14 @@ import React, {useState, useEffect} from 'react';
 import {Icon} from 'react-native-elements';
 
 import LinearGradient from 'react-native-linear-gradient';
-import {CallingCodePicker} from 'rn-country-code-picker';
+import {CallingCodePicker} from '@digieggs/rn-country-code-picker';
 
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
 const SignUpScreen = () => {
   const [showHidePassword, setShowHidePassword] = useState(false);
   const [areaCode, setAreaCode] = useState([]);
-  //const [countries, setCountries] = useState([]);
+  const [selectedCallingCode, setSelectedCallingCode] = useState(90);
   const [selectedAreaCode, setSelectedAreaCode] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -65,6 +65,22 @@ const SignUpScreen = () => {
     );
   }
 
+  function renderCountryCode() {
+    return (
+      <View style={{left: -8}}>
+        <CallingCodePicker
+          initialCountryCode="ZA"
+          selectedValue={selectedCallingCode}
+          onValueChange={value => setSelectedCallingCode(value)}
+          searchInputStyle={{color: COLORS.black}}
+          pickerItemLabelStyle={{color: COLORS.black, fontSize: 15}}
+          togglerLabelStyle={{color: COLORS.white, fontSize: 15}}
+          style={{marginRight: -10, paddingTop: 12}}
+        />
+      </View>
+    );
+  }
+
   function renderForm() {
     return (
       <View style={styles.formView}>
@@ -81,24 +97,7 @@ const SignUpScreen = () => {
           <Text style={styles.textView}>Phone Number</Text>
           <View style={styles.areaCodeView}>
             <TouchableOpacity style={styles.areaCodeTouchableView} onPress={{}}>
-              <View style={{justifyContent: 'center'}}>
-                <Icon
-                  type="material-community"
-                  name="arrow-down-drop-circle"
-                  size={20}
-                  color={COLORS.white}
-                />
-              </View>
-              <View style={styles.flagView}>
-                <Image
-                  source={images.sa_flag}
-                  resizeMode="contain"
-                  style={{width: 30, height: 30}}
-                />
-              </View>
-              <View style={styles.fullNumberView}>
-                <Text style={styles.fullnumberTextView}>+27</Text>
-              </View>
+              <View style={styles.flagView}>{renderCountryCode()}</View>
             </TouchableOpacity>
             <TextInput
               style={styles.textinput2}
