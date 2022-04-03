@@ -11,8 +11,7 @@ target 'eWallet' do
     # to enable hermes on iOS, change `false` to `true` and then install pods
     :hermes_enabled => false
   )
-
-  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+  #pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'  # <= this line, needed for vector-icons
 
   target 'eWalletTests' do
     inherit! :complete

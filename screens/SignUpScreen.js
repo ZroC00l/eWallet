@@ -16,43 +16,24 @@ import React, {useState, useEffect} from 'react';
 import {Icon} from 'react-native-elements';
 
 import LinearGradient from 'react-native-linear-gradient';
+import {CallingCodePicker} from 'rn-country-code-picker';
 
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
 
 const SignUpScreen = () => {
   const [showHidePassword, setShowHidePassword] = useState(false);
   const [areaCode, setAreaCode] = useState([]);
+  //const [countries, setCountries] = useState([]);
   const [selectedAreaCode, setSelectedAreaCode] = useState(null);
   const [modalVisible, setModalVisible] = useState(false);
 
-  /*useEffect hook to collect country area codes from rest countires API*/
-  useEffect(() => {
-    fetch('https://restcountries.eu/rest/v2/all')
-      .then(response => response.json())
-      .then(data => {
-        //setAreaCode(data);
-        let areaData = data.map(item => {
-          return {
-            code: item.alpha2Code,
-            name: item.name,
-            callingCode: `+${item.callingCodes[0]}`,
-            flag: `https://www.countryflags.io/${item.alpha2Code}/flat/64.png`, //not sure if this is the correct way to get the flag, cause countryflags site api doesnt work
-          };
-        });
-        setAreaCode(areaData);
-
-        if (areaData.length > 0) {
-          let defaultData = areaData.filter(a => a.code == 'us');
-
-          if (defaultData.length > 0) {
-            setSelectedAreaCode(defaultData[0]);
-          }
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+  /*const fetchCountries = async () => {
+    const response = await fetch(`http://api.countrylayer.com/v2/all
+    ? access_key = ${process.env.COUNTRY_LAYER_API_KEY}`);
+    const data = await response.json();
+    setCountries(data.countries);
+    console.log(data.countries);
+  };*/
 
   function renderHeader() {
     return (
@@ -110,15 +91,13 @@ const SignUpScreen = () => {
               </View>
               <View style={styles.flagView}>
                 <Image
-                  source={{uri: selectedAreaCode?.flag}}
+                  source={images.sa_flag}
                   resizeMode="contain"
                   style={{width: 30, height: 30}}
                 />
               </View>
               <View style={styles.fullNumberView}>
-                <Text style={styles.fullnumberTextView}>
-                  {selectedAreaCode?.callingCode}
-                </Text>
+                <Text style={styles.fullnumberTextView}>+27</Text>
               </View>
             </TouchableOpacity>
             <TextInput
