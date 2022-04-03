@@ -19,7 +19,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {CallingCodePicker} from '@digieggs/rn-country-code-picker';
 
 import {COLORS, SIZES, FONTS, icons, images} from '../constants';
-import {NavigationContainer} from '@react-navigation/native';
+//import {NavigationContainer} from '@react-navigation/native';
 
 const SignUpScreen = ({navigation}) => {
   const [showHidePassword, setShowHidePassword] = useState(false);

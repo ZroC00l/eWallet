@@ -28,12 +28,15 @@ const App = () => {
       <StackNav.Navigator
         screenOptions={{headerShown: false}}
         initialRouteName={SignUpScreen}>
-        <StackNav.Screen name="SignUpScreen" component={SignUpScreen} />
+        <StackNav.Screen
+          name="SignUpScreen"
+          component={SignUpScreen}
+          options={{headerShown: false}}
+        />
         <StackNav.Screen
           name="HomeScreen"
           component={Tabs}
-          headerShown="false"
-          screenOptions={{headerShown: false}}
+          options={{headerShown: false}}
         />
       </StackNav.Navigator>
     </NavigationContainer>

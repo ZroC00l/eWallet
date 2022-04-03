@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, Image} from 'react-native';
 import React from 'react';
 import {
   BottomTabBar,
@@ -17,23 +17,65 @@ const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarShowLabel: false,
+        style: {
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          backgroundColor: 'transparent',
+          elevation: 0,
+        },
+      }}>
       <Tab.Screen
-        name="HomeScreen"
+        name="Home"
+        screenOptions={{headerShown: false}}
         component={HomeScreen}
-        headerShown="false"
-        screenOptions={{headerTitle: 'Test', headerShown: false}}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={icons.more}
+              resizeMode="contain"
+              style={{width: 20, height: 20}}
+            />
+          ),
+        }}
+        headerShown={false}
       />
       <Tab.Screen
         name="ScanScreen"
         component={ScanScreen}
-        headerShown="false"
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={icons.scan}
+              resizeMode="contain"
+              style={{width: 20, height: 20}}
+            />
+          ),
+        }}
       />
-      <Tab.Screen name="User" component={HomeScreen} headerShown="false" />
+      <Tab.Screen
+        name="User"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({focused}) => (
+            <Image
+              source={icons.user}
+              resizeMode="contain"
+              style={{width: 20, height: 20}}
+            />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
 
 export default Tabs;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  tabBottomStyle: {},
+});
