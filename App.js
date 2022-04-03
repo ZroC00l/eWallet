@@ -36,7 +36,7 @@ const App = () => {
         <StackNav.Screen
           name="HomeScreen"
           component={Tabs}
-          options={{headerShown: false}}
+          options={() => ({headerShown: false})}
         />
       </StackNav.Navigator>
     </NavigationContainer>

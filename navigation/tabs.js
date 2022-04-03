@@ -31,9 +31,10 @@ const Tabs = () => {
       }}>
       <Tab.Screen
         name="Home"
-        screenOptions={{headerShown: false}}
+        //screenOptions={{headerShown: false}}
         component={HomeScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Image
               source={icons.more}
@@ -48,6 +49,7 @@ const Tabs = () => {
         name="ScanScreen"
         component={ScanScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Image
               source={icons.scan}
@@ -61,6 +63,7 @@ const Tabs = () => {
         name="User"
         component={HomeScreen}
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Image
               source={icons.user}
