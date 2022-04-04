@@ -71,6 +71,8 @@ const TabBarCustomButton = ({
   }
 };
 
+/*Custom bottom nav tab for iphoneX to take full bottom with padding */
+
 const CustomTabBar = props => {
   if (isIphoneX()) {
     return (
