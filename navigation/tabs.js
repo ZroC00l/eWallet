@@ -55,14 +55,7 @@ const TabBarCustomButton = ({
   } else {
     return (
       <TouchableOpacity
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          width: 50,
-          height: 50,
-          backgroundColor: COLORS.white,
-        }}
+        style={styles.touchView}
         activeOpacity={1}
         onPress={onPress}>
         {children}
@@ -77,14 +70,7 @@ const CustomTabBar = props => {
   if (isIphoneX()) {
     return (
       <View>
-        <View
-          style={{
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            height: 30,
-            backgroundColor: COLORS.white,
-          }}></View>
+        <View style={styles.customTabView}></View>
         <BottomTabBar {...props.props} />
       </View>
     );
@@ -110,7 +96,6 @@ const Tabs = () => {
       tabBar={props => <CustomTabBar props={props} />}>
       <Tab.Screen
         name="Home"
-        //screenOptions={{headerShown: false}}
         component={HomeScreen}
         options={{
           headerShown: false,
@@ -174,6 +159,21 @@ const Tabs = () => {
 export default Tabs;
 
 const styles = StyleSheet.create({
+  touchView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 50,
+    height: 50,
+    backgroundColor: COLORS.white,
+  },
+  customTabView: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    height: 30,
+    backgroundColor: COLORS.white,
+  },
   shadow: {
     shadowColor: COLORS.primary,
     shadowOffset: {

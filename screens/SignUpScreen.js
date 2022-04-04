@@ -39,12 +39,7 @@ const SignUpScreen = ({navigation}) => {
   function renderHeader() {
     return (
       <TouchableOpacity
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginTop: SIZES.padding * 6,
-          paddingHorizontal: SIZES.padding * 2,
-        }}
+        style={styles.headerView}
         //onPress={() => console.log('Sign Up')}>
       >
         <Icon
@@ -163,6 +158,12 @@ const SignUpScreen = ({navigation}) => {
 export default SignUpScreen;
 
 const styles = StyleSheet.create({
+  headerView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: SIZES.padding * 6,
+    paddingHorizontal: SIZES.padding * 2,
+  },
   signupText: {
     color: COLORS.white,
     fontSize: 20,

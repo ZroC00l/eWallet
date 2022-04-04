@@ -5,8 +5,9 @@ import {
   SafeAreaView,
   FlatList,
   TouchableOpacity,
+  Image,
 } from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {COLORS, FONTS, SIZES, icons, images} from '../constants';
 
 const HomeScreen = () => {
@@ -70,13 +71,88 @@ const HomeScreen = () => {
     },
   ];
 
+  const specialPromo = [
+    {
+      id: 1,
+      img: images.promo_banner,
+      title: 'Bonus Cashback1',
+      description: 'Don;t miss it. Grab it now!',
+    },
+    {
+      id: 2,
+      img: images.promo_banner,
+      title: 'Bonus Cashback2',
+      description: 'Don;t miss it. Grab it now!',
+    },
+    {
+      id: 3,
+      img: images.promo_banner,
+      title: 'Bonus Cashback3',
+      description: 'Don;t miss it. Grab it now!',
+    },
+    {
+      id: 4,
+      img: images.promo_banner,
+      title: 'Bonus Cashback4',
+      description: 'Don;t miss it. Grab it now!',
+    },
+  ];
+
+  const [features, setFeatures] = useState(featuresData);
+  const [specialPromos, setSpecialPromos] = useState(specialPromo);
+
+  function renderPromos() {
+    const renderItem = ({item}) => (
+      <TouchableOpacity
+        style={styles.touchView}
+        onPress={() => console.log(item.title)}>
+        <View style={styles.touchInnerView}>
+          <Image
+            source={images.promo_banner}
+            resizeMode="cover"
+            style={styles.imageView}
+          />
+        </View>
+      </TouchableOpacity>
+    );
+
+    return (
+      <FlatList
+        contentContainerStyle={{paddingHorizontal: SIZES.padding * 3}}
+        numColumns={2}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        data={specialPromos}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  }
+
   return (
-    <SafeAreaView>
-      <Text>HomeScreen</Text>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.white}}>
+      {renderPromos()}
     </SafeAreaView>
   );
 };
 
 export default HomeScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  touchView: {
+    marginVertical: SIZES.base,
+    width: SIZES.width / 2.5,
+  },
+  touchInnerView: {
+    height: 80,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    backgroundColor: COLORS.primary,
+  },
+  imageView: {
+    width: '100%',
+    height: '100%',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+  },
+});
