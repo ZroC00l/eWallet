@@ -39,7 +39,11 @@ const Tabs = () => {
             <Image
               source={icons.more}
               resizeMode="contain"
-              style={{width: 20, height: 20}}
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? COLORS.lime : COLORS.secondary,
+              }}
             />
           ),
         }}
@@ -54,7 +58,11 @@ const Tabs = () => {
             <Image
               source={icons.scan}
               resizeMode="contain"
-              style={{width: 20, height: 20}}
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? COLORS.lime : COLORS.secondary,
+              }}
             />
           ),
         }}
@@ -68,7 +76,11 @@ const Tabs = () => {
             <Image
               source={icons.user}
               resizeMode="contain"
-              style={{width: 20, height: 20}}
+              style={{
+                width: 20,
+                height: 20,
+                tintColor: focused ? COLORS.lime : COLORS.secondary,
+              }}
             />
           ),
         }}
