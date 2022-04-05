@@ -125,14 +125,41 @@ const HomeScreen = () => {
               source={icons.bell}
               style={{width: 20, height: 20, tintColor: COLORS.secondary}}
             />
+            <View
+              style={{
+                position: 'absolute',
+                top: -5,
+                right: -5,
+                height: 10,
+                width: 10,
+                borderRadius: 5,
+                backgroundColor: COLORS.red,
+              }}></View>
           </TouchableOpacity>
         </View>
       </View>
     );
   }
 
+  function renderBanner() {
+    return (
+      <View style={{height: 120, borderRadius: 20}}>
+        <Image
+          source={images.banner}
+          resizeMode="cover"
+          style={{width: '100%', height: '100%', borderRadius: 20}}
+        />
+      </View>
+    );
+  }
+
   function renderPromos() {
-    const headerComponent = () => <View style={{}}>{renderHeader()}</View>;
+    const headerComponent = () => (
+      <View style={{}}>
+        {renderHeader()}
+        {renderBanner()}
+      </View>
+    );
 
     const renderItem = ({item}) => (
       <TouchableOpacity
