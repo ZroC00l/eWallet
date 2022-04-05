@@ -113,6 +113,16 @@ const HomeScreen = () => {
             style={styles.imageView}
           />
         </View>
+        <View
+          style={{
+            padding: SIZES.padding,
+            backgroundColor: COLORS.lightGray,
+            borderBottomLeftRadius: 20,
+            borderBottomRightRadius: 20,
+          }}>
+          <Text style={{...FONTS.h4}}>{item.title}</Text>
+          <Text style={{...FONTS.body4}}>{item.description}</Text>
+        </View>
       </TouchableOpacity>
     );
 
