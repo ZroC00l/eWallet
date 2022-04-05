@@ -153,11 +153,34 @@ const HomeScreen = () => {
     );
   }
 
+  function renderFeatures() {
+    const header = () => (
+      <View style={{marginBottom: SIZES.padding * 2}}>
+        <Text style={{...FONTS.h3}}>Features</Text>
+      </View>
+    );
+
+    const renderItem = ({item}) => <TouchableOpacity></TouchableOpacity>;
+
+    return (
+      <FlatList
+        ListHeaderComponent={header}
+        data={featuresData}
+        numColumns={4}
+        columnWrapperStyle={{justifyContent: 'space-between'}}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+        style={{marginTop: SIZES.padding * 2}}
+      />
+    );
+  }
+
   function renderPromos() {
     const headerComponent = () => (
       <View style={{}}>
         {renderHeader()}
         {renderBanner()}
+        {renderFeatures()}
       </View>
     );
 
