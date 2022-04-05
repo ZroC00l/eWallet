@@ -101,7 +101,39 @@ const HomeScreen = () => {
   const [features, setFeatures] = useState(featuresData);
   const [specialPromos, setSpecialPromos] = useState(specialPromo);
 
+  function renderHeader() {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          marginVertical: SIZES.padding * 2,
+        }}>
+        <View style={{flex: 1}}>
+          <Text style={{...FONTS.h1}}>Hello!</Text>
+          <Text style={{...FONTS.body2, color: COLORS.gray}}>Thato</Text>
+        </View>
+        <View style={{alignItems: 'center', justifyContent: 'center'}}>
+          <TouchableOpacity
+            style={{
+              height: 40,
+              width: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: COLORS.lightGray,
+            }}>
+            <Image
+              source={icons.bell}
+              style={{width: 20, height: 20, tintColor: COLORS.secondary}}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
   function renderPromos() {
+    const headerComponent = () => <View style={{}}>{renderHeader()}</View>;
+
     const renderItem = ({item}) => (
       <TouchableOpacity
         style={styles.touchView}
@@ -128,6 +160,7 @@ const HomeScreen = () => {
 
     return (
       <FlatList
+        ListHeaderComponent={headerComponent}
         contentContainerStyle={{paddingHorizontal: SIZES.padding * 3}}
         numColumns={2}
         columnWrapperStyle={{justifyContent: 'space-between'}}
