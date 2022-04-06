@@ -160,7 +160,34 @@ const HomeScreen = () => {
       </View>
     );
 
-    const renderItem = ({item}) => <TouchableOpacity></TouchableOpacity>;
+    const renderItem = ({item}) => (
+      <TouchableOpacity
+        style={{
+          marginBottom: SIZES.padding * 2,
+          width: 60,
+          alignItems: 'center',
+        }}
+        onPress={() => console.log(item.description)}>
+        <View
+          style={{
+            height: 50,
+            width: 50,
+            marginBottom: 5,
+            backgroundColor: item.backgroundColor,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Image
+            source={item.icon}
+            resizeMode="contain"
+            style={{width: 20, height: 20, tintColor: item.color}}
+          />
+        </View>
+        <Text style={{textAlign: 'center', flexWrap: 'wrap', ...FONTS.body4}}>
+          {item.description}
+        </Text>
+      </TouchableOpacity>
+    );
 
     return (
       <FlatList
