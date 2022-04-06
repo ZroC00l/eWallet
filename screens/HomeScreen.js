@@ -74,27 +74,27 @@ const HomeScreen = () => {
   const specialPromo = [
     {
       id: 1,
-      img: images.promo_banner,
-      title: 'Bonus Cashback1',
-      description: 'Don;t miss it. Grab it now!',
+      img: images.cash_back,
+      title: 'Bonus Cashback',
+      description: "Don't miss it. Grab it now!",
     },
     {
       id: 2,
-      img: images.promo_banner,
-      title: 'Bonus Cashback2',
-      description: 'Don;t miss it. Grab it now!',
+      img: images.enter,
+      title: 'Win as you play',
+      description: "Don't miss it. Grab it now!",
     },
     {
       id: 3,
-      img: images.promo_banner,
-      title: 'Bonus Cashback3',
-      description: 'Don;t miss it. Grab it now!',
+      img: images.vouchers,
+      title: 'Vouchers',
+      description: "Don't miss it. Grab it now!",
     },
     {
       id: 4,
-      img: images.promo_banner,
-      title: 'Bonus Cashback4',
-      description: 'Don;t miss it. Grab it now!',
+      img: images.save,
+      title: 'Save More with',
+      description: "Don't miss it. Grab it now!",
     },
   ];
 
@@ -229,7 +229,7 @@ const HomeScreen = () => {
         onPress={() => console.log(item.title)}>
         <View style={styles.touchInnerView}>
           <Image
-            source={images.promo_banner}
+            source={item.img}
             resizeMode="cover"
             style={styles.imageView}
           />
