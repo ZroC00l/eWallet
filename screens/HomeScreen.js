@@ -208,6 +208,18 @@ const HomeScreen = () => {
         {renderHeader()}
         {renderBanner()}
         {renderFeatures()}
+        {renderSpecialPromosHeader()}
+      </View>
+    );
+
+    const renderSpecialPromosHeader = () => (
+      <View style={{flexDirection: 'row', marginBottom: SIZES.padding * 2}}>
+        <View style={{flex: 1}}>
+          <Text style={{...FONTS.h3}}>Special Promos</Text>
+        </View>
+        <TouchableOpacity onPress={() => console.log('View all')}>
+          <Text style={{...FONTS.body4, color: COLORS.gray}}>View all</Text>
+        </TouchableOpacity>
       </View>
     );
 
@@ -245,6 +257,7 @@ const HomeScreen = () => {
         keyExtractor={item => `${item.id}`}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
+        ListFooterComponent={<View style={{marginBottom: 80}}></View>}
       />
     );
   }
