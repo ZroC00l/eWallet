@@ -13,26 +13,18 @@ import {COLORS, FONTS, SIZES, icons, images} from '../constants';
 const ScanScreen = ({navigation}) => {
   function renderHeader() {
     return (
-      <View
-        style={{
-          flexDirection: 'row',
-          marginTop: SIZES.padding * 4,
-          paddingHorizontal: SIZES.padding * 3,
-        }}>
+      <View style={styles.view3}>
         <TouchableOpacity
-          style={{width: 45, alignItems: 'center', justifyContent: 'center'}}
+          style={styles.view2}
           onPress={() => navigation.navigate('HomeScreen')}>
-          <Image
-            source={icons.close}
-            style={{height: 20, width: 20, tintColor: COLORS.white}}
-          />
+          <Image source={icons.close} style={styles.imageView} />
         </TouchableOpacity>
       </View>
     );
   }
 
   return (
-    <View style={{flex: 1, backgroundColor: COLORS.transparent}}>
+    <View style={styles.view1}>
       <RNCamera
         ref={ref => {
           this.camera = ref;
@@ -55,4 +47,24 @@ const ScanScreen = ({navigation}) => {
 
 export default ScanScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  view1: {
+    flex: 1,
+    backgroundColor: COLORS.transparent,
+  },
+  view2: {
+    width: 45,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  view3: {
+    flexDirection: 'row',
+    marginTop: SIZES.padding * 4,
+    paddingHorizontal: SIZES.padding * 3,
+  },
+  imageView: {
+    height: 20,
+    width: 20,
+    tintColor: COLORS.white,
+  },
+});
