@@ -4,12 +4,33 @@ import {
   View,
   SafeAreaView,
   TouchableOpacity,
+  Image,
 } from 'react-native';
 import React from 'react';
 import {RNCamera, FaceDetector} from 'react-native-camera';
 import {COLORS, FONTS, SIZES, icons, images} from '../constants';
 
-const ScanScreen = () => {
+const ScanScreen = ({navigation}) => {
+  function renderHeader() {
+    return (
+      <View
+        style={{
+          flexDirection: 'row',
+          marginTop: SIZES.padding * 4,
+          paddingHorizontal: SIZES.padding * 3,
+        }}>
+        <TouchableOpacity
+          style={{width: 45, alignItems: 'center', justifyContent: 'center'}}
+          onPress={() => navigation.navigate('HomeScreen')}>
+          <Image
+            source={icons.close}
+            style={{height: 20, width: 20, tintColor: COLORS.white}}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <View style={{flex: 1, backgroundColor: COLORS.transparent}}>
       <RNCamera
@@ -25,8 +46,9 @@ const ScanScreen = () => {
           message: 'Camera is required fir barcode scanning',
           buttonPositive: 'Ok',
           buttonNegative: 'Cancel',
-        }}
-      />
+        }}>
+        {renderHeader()}
+      </RNCamera>
     </View>
   );
 };

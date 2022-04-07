@@ -95,7 +95,7 @@ const Tabs = () => {
       }}
       tabBar={props => <CustomTabBar props={props} />}>
       <Tab.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           headerShown: false,
@@ -134,7 +134,7 @@ const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="User"
+        name="UserScreen"
         component={HomeScreen}
         options={{
           headerShown: false,
